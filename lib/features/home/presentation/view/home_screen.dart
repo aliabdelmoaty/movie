@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Popular Movies',
-          style: AppTextStyles.s20w700.c(
+          style: AppTextStyles.s16w700.c(
             Theme.of(context).colorScheme.onPrimary,
           ),
         ),
@@ -49,25 +49,25 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.error_outline,
-                    size: 64.r,
+                    size: 48.r,
                     color: Theme.of(context).colorScheme.error,
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: 12.h),
                   Text(
                     'Error',
-                    style: AppTextStyles.s20w700.c(
+                    style: AppTextStyles.s16w700.c(
                       Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 6.h),
                   Text(
                     state.message,
-                    style: AppTextStyles.s16w400.c(
+                    style: AppTextStyles.s14w400.c(
                       Theme.of(context).colorScheme.onSurface,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: 12.h),
                   ElevatedButton(
                     onPressed: () {
                       context.read<MovieCubit>().fetchMovies(
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
               return Center(
                 child: Text(
                   'No movies found',
-                  style: AppTextStyles.s18w500.c(
+                  style: AppTextStyles.s14w500.c(
                     Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
             }
 
             return Padding(
-              padding: EdgeInsets.all(8.0.r),
+              padding: EdgeInsets.all(6.0.r),
               child: Column(
                 children: [
                   Expanded(
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   if (state.hasMorePages)
                     ElevatedButton(
                       onPressed: state.isLoadingMore
@@ -135,15 +135,15 @@ class HomeScreen extends StatelessWidget {
                             )
                           : Text(
                               'Load More Movies',
-                              style: AppTextStyles.s16w500,
+                              style: AppTextStyles.s14w500,
                             ),
                     )
                   else
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      padding: EdgeInsets.symmetric(vertical: 6.h),
                       child: Text(
                         'No more movies to load',
-                        style: AppTextStyles.s14w400.c(
+                        style: AppTextStyles.s12w400.c(
                           Theme.of(
                             context,
                           ).colorScheme.onSurface.withOpacity(0.6),
@@ -171,42 +171,44 @@ class CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      margin: EdgeInsets.only(bottom: 8.h),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+      margin: EdgeInsets.only(bottom: 6.h),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
       child: Padding(
-        padding: EdgeInsets.all(8.0.r),
+        padding: EdgeInsets.all(6.0.r),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(6.r),
               child: movie.fullPosterPath.isNotEmpty
                   ? CachedNetworkImage(
                       imageUrl: movie.fullPosterPath,
-                      width: 100.w,
-                      height: 150.h,
+                      width: 60.w,
+                      height: 90.h,
                       fit: BoxFit.cover,
                       placeholder: (context, url) => Container(
-                        width: 100.w,
-                        height: 150.h,
+                        width: 60.w,
+                        height: 90.h,
                         color: Colors.grey[300],
-                        child: const Center(child: CircularProgressIndicator()),
+                        child: const Center(
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
                       ),
                       errorWidget: (context, url, error) => Container(
-                        width: 100.w,
-                        height: 150.h,
+                        width: 60.w,
+                        height: 90.h,
                         color: Colors.grey[300],
-                        child: const Icon(Icons.image_not_supported),
+                        child: Icon(Icons.image_not_supported, size: 24.r),
                       ),
                     )
                   : Container(
-                      width: 100.w,
-                      height: 150.h,
+                      width: 60.w,
+                      height: 90.h,
                       color: Colors.grey[300],
-                      child: const Icon(Icons.image_not_supported),
+                      child: Icon(Icons.image_not_supported, size: 24.r),
                     ),
             ),
-            SizedBox(width: 10.w),
+            SizedBox(width: 8.w),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -218,54 +220,44 @@ class CardItem extends StatelessWidget {
                       children: [
                         Text(
                           movie.title,
-                          style: AppTextStyles.s18w700.c(
+                          style: AppTextStyles.s14w700.c(
                             Theme.of(context).colorScheme.onSurface,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 4.h),
+                        SizedBox(height: 3.h),
                         Row(
                           children: [
-                            Icon(Icons.star, size: 16.r, color: Colors.amber),
-                            SizedBox(width: 4.w),
+                            Icon(Icons.star, size: 12.r, color: Colors.amber),
+                            SizedBox(width: 3.w),
                             Text(
                               '${movie.voteAverage.toStringAsFixed(1)}/10',
-                              style: AppTextStyles.s16w500.c(
+                              style: AppTextStyles.s12w500.c(
                                 Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 8.h),
+                        SizedBox(height: 4.h),
                         Text(
                           movie.releaseDate.isNotEmpty
                               ? movie.releaseDate.substring(0, 4)
                               : 'N/A',
-                          style: AppTextStyles.s14w400.c(
+                          style: AppTextStyles.s10w400.c(
                             Theme.of(
                               context,
                             ).colorScheme.onSurface.withOpacity(0.7),
                           ),
                         ),
-                        SizedBox(height: 4.h),
-                        if (movie.overview.isNotEmpty)
-                          Text(
-                            movie.overview,
-                            style: AppTextStyles.s12w400.c(
-                              Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withOpacity(0.6),
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
                       ],
                     ),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward_ios),
+                    icon: Icon(Icons.arrow_forward_ios, size: 16.r),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
                 ],
               ),

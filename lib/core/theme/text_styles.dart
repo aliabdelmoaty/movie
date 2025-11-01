@@ -50,6 +50,16 @@ abstract class AppTextStyles {
       GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w600);
   static TextStyle get s12w400 =>
       GoogleFonts.poppins(fontSize: 12.sp, fontWeight: FontWeight.w400);
+  static TextStyle get s12w500 =>
+      GoogleFonts.poppins(fontSize: 12.sp, fontWeight: FontWeight.w500);
+  static TextStyle get s12w600 =>
+      GoogleFonts.poppins(fontSize: 12.sp, fontWeight: FontWeight.w600);
+  static TextStyle get s16w700 =>
+      GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.w700);
+  static TextStyle get s14w700 =>
+      GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w700);
+  static TextStyle get s14w500 =>
+      GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w500);
   static TextStyle get s18w600 =>
       GoogleFonts.poppins(fontSize: 18.sp, fontWeight: FontWeight.w600);
   static TextStyle get s26w700 =>
