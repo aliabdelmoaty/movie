@@ -610,35 +610,11 @@ if (state.hasMorePages && !state.isLoadingMore) {
 
 ---
 
-## Future Enhancements
-
-Potential improvements:
-- Search functionality
-- Movie favorites/bookmarks
-- User authentication
-- Reviews and ratings
-- Trailers integration
-- Advanced filtering and sorting
-
----
-
 ## License
 
 This project is created for educational purposes.
 
 ---
-
-## Acknowledgments
-
-- **The Movie Database (TMDB)** for providing the API
-- **Flutter Team** for the amazing framework
-- **Firebase** for error logging services
-
----
-
-## Contact & Support
-
-For questions or issues, please refer to the project documentation or create an issue in the repository.
 
 ---
 
